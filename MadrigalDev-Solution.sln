@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2047
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadrigalDev", "MadrigalDev\MadrigalDev.csproj", "{EFB59EC6-BA4C-48E5-AC45-0FD3D60C8FAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadrigalDev.Tests", "MadrigalDev.Tests\MadrigalDev.Tests.csproj", "{AC5B07CF-64A9-43E3-AA02-73F8C3A9CD7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFB59EC6-BA4C-48E5-AC45-0FD3D60C8FAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB59EC6-BA4C-48E5-AC45-0FD3D60C8FAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB59EC6-BA4C-48E5-AC45-0FD3D60C8FAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB59EC6-BA4C-48E5-AC45-0FD3D60C8FAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC5B07CF-64A9-43E3-AA02-73F8C3A9CD7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC5B07CF-64A9-43E3-AA02-73F8C3A9CD7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC5B07CF-64A9-43E3-AA02-73F8C3A9CD7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC5B07CF-64A9-43E3-AA02-73F8C3A9CD7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {091BEC5C-F432-4DEB-BB9C-EA16C334A449}
+	EndGlobalSection
+EndGlobal
