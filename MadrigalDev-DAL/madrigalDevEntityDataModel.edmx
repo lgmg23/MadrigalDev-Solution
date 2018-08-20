@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="madrigaldev_testModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="t_empresa">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdEmpresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_login">
+          <Key>
+            <PropertyRef Name="IdLogin" />
+          </Key>
+          <Property Name="IdLogin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsuarioT" Type="int" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Rol" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpresaT" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="ApellidoP" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="ApellidoM" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_LoginUsuario">
+          <End Role="t_usuario" Type="Self.t_usuario" Multiplicity="1" />
+          <End Role="t_login" Type="Self.t_login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="t_login">
+              <PropertyRef Name="UsuarioT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioEmpresa">
+          <End Role="t_empresa" Type="Self.t_empresa" Multiplicity="1" />
+          <End Role="t_usuario" Type="Self.t_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_empresa">
+              <PropertyRef Name="IdEmpresa" />
+            </Principal>
+            <Dependent Role="t_usuario">
+              <PropertyRef Name="EmpresaT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="madrigaldev_testModelStoreContainer">
+          <EntitySet Name="t_empresa" EntityType="Self.t_empresa" Schema="madrigaldev_test" store:Type="Tables" />
+          <EntitySet Name="t_login" EntityType="Self.t_login" Schema="madrigaldev_test" store:Type="Tables" />
+          <EntitySet Name="t_usuario" EntityType="Self.t_usuario" Schema="madrigaldev_test" store:Type="Tables" />
+          <AssociationSet Name="FK_LoginUsuario" Association="Self.FK_LoginUsuario">
+            <End Role="t_usuario" EntitySet="t_usuario" />
+            <End Role="t_login" EntitySet="t_login" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioEmpresa" Association="Self.FK_UsuarioEmpresa">
+            <End Role="t_empresa" EntitySet="t_empresa" />
+            <End Role="t_usuario" EntitySet="t_usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="madrigaldev_testModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="t_empresa">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="t_usuario" Relationship="Self.FK_UsuarioEmpresa" FromRole="t_empresa" ToRole="t_usuario" />
+        </EntityType>
+        <EntityType Name="t_login">
+          <Key>
+            <PropertyRef Name="IdLogin" />
+          </Key>
+          <Property Name="IdLogin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioT" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rol" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="t_usuario" Relationship="Self.FK_LoginUsuario" FromRole="t_login" ToRole="t_usuario" />
+        </EntityType>
+        <EntityType Name="t_usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpresaT" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApellidoP" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApellidoM" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="t_empresa" Relationship="Self.FK_UsuarioEmpresa" FromRole="t_usuario" ToRole="t_empresa" />
+          <NavigationProperty Name="t_login" Relationship="Self.FK_LoginUsuario" FromRole="t_usuario" ToRole="t_login" />
+        </EntityType>
+        <Association Name="FK_UsuarioEmpresa">
+          <End Role="t_empresa" Type="Self.t_empresa" Multiplicity="1" />
+          <End Role="t_usuario" Type="Self.t_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_empresa">
+              <PropertyRef Name="IdEmpresa" />
+            </Principal>
+            <Dependent Role="t_usuario">
+              <PropertyRef Name="EmpresaT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoginUsuario">
+          <End Role="t_usuario" Type="Self.t_usuario" Multiplicity="1" />
+          <End Role="t_login" Type="Self.t_login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="t_login">
+              <PropertyRef Name="UsuarioT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="madrigaldev_testEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="t_empresa" EntityType="Self.t_empresa" />
+          <EntitySet Name="t_login" EntityType="Self.t_login" />
+          <EntitySet Name="t_usuario" EntityType="Self.t_usuario" />
+          <AssociationSet Name="FK_UsuarioEmpresa" Association="Self.FK_UsuarioEmpresa">
+            <End Role="t_empresa" EntitySet="t_empresa" />
+            <End Role="t_usuario" EntitySet="t_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoginUsuario" Association="Self.FK_LoginUsuario">
+            <End Role="t_usuario" EntitySet="t_usuario" />
+            <End Role="t_login" EntitySet="t_login" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="madrigaldev_testModelStoreContainer" CdmEntityContainer="madrigaldev_testEntities">
+          <EntitySetMapping Name="t_empresa">
+            <EntityTypeMapping TypeName="madrigaldev_testModel.t_empresa">
+              <MappingFragment StoreEntitySet="t_empresa">
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_login">
+            <EntityTypeMapping TypeName="madrigaldev_testModel.t_login">
+              <MappingFragment StoreEntitySet="t_login">
+                <ScalarProperty Name="IdLogin" ColumnName="IdLogin" />
+                <ScalarProperty Name="UsuarioT" ColumnName="UsuarioT" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_usuario">
+            <EntityTypeMapping TypeName="madrigaldev_testModel.t_usuario">
+              <MappingFragment StoreEntitySet="t_usuario">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="EmpresaT" ColumnName="EmpresaT" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApellidoP" ColumnName="ApellidoP" />
+                <ScalarProperty Name="ApellidoM" ColumnName="ApellidoM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
