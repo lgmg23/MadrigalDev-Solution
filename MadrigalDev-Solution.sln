@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadrigalDev-BL", "MadrigalD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadrigalDev-DAL", "MadrigalDev-DAL\MadrigalDev-DAL.csproj", "{B7966EEB-ED23-4661-A4CD-A061FDCBE5CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadrigalDev-Model", "MadrigalDev-Model\MadrigalDev-Model.csproj", "{CEB5DFE3-1558-4603-83B6-35B27BD448DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B7966EEB-ED23-4661-A4CD-A061FDCBE5CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7966EEB-ED23-4661-A4CD-A061FDCBE5CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7966EEB-ED23-4661-A4CD-A061FDCBE5CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEB5DFE3-1558-4603-83B6-35B27BD448DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEB5DFE3-1558-4603-83B6-35B27BD448DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEB5DFE3-1558-4603-83B6-35B27BD448DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEB5DFE3-1558-4603-83B6-35B27BD448DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
